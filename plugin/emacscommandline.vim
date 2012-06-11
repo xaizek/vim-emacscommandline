@@ -5,7 +5,7 @@ cnoremap <C-F> <Right>
 cnoremap <C-P> <Up>
 cnoremap <C-N> <Down>
 cnoremap <Esc>r <C-F>?
-cmap <M-R> <Esc>r
+cmap <M-r> <Esc>r
 
 " Maps to old shortcuts using Ctrl-O as a prefix
 cnoremap <C-O><C-A>      <C-A>
@@ -25,7 +25,7 @@ cnoremap <C-O><Del>      <Del>
 cnoremap <C-O><BS>       <BS>
 
 cnoremap <Esc>f <C-\>e<SID>ForwardWord()<CR>
-cmap <M-F> <Esc>f
+cmap <M-f> <Esc>f
 function! <SID>ForwardWord()
     let l:loc = strpart(getcmdline(), 0, getcmdpos() - 1)
     let l:roc = strpart(getcmdline(), getcmdpos() - 1)
@@ -42,7 +42,7 @@ function! <SID>ForwardWord()
 endfunction
 
 cnoremap <Esc>b <C-\>e<SID>BackwardWord()<CR>
-cmap <M-B> <Esc>b
+cmap <M-b> <Esc>b
 function! <SID>BackwardWord()
     let l:loc = strpart(getcmdline(), 0, getcmdpos() - 1)
     let l:roc = strpart(getcmdline(), getcmdpos() - 1)
@@ -121,7 +121,7 @@ function! <SID>BackwardKillLine()
 endfunction
 
 cnoremap <Esc>d <C-\>e<SID>KillWord()<CR>
-cmap <M-D> <Esc>d
+cmap <M-d> <Esc>d
 function! <SID>KillWord()
     call <SID>saveUndoHistory(getcmdline(), getcmdpos())
     let l:loc = strpart(getcmdline(), 0, getcmdpos() - 1)
