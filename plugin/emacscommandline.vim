@@ -4,8 +4,12 @@ cnoremap <C-B> <Left>
 cnoremap <C-F> <Right>
 cnoremap <C-P> <Up>
 cnoremap <C-N> <Down>
-cnoremap <Esc>r <C-F>?
-cmap <M-r> <Esc>r
+if has('gui_running')
+    cnoremap <M-r> <C-F>?
+else
+    cnoremap <Esc>r <C-F>?
+    cmap <M-r> <Esc>r
+endif
 
 " Maps to old shortcuts using Ctrl-O as a prefix
 cnoremap <C-O><C-A>      <C-A>
@@ -24,8 +28,12 @@ cnoremap <C-O><C-X><C-U> <C-X><C-U>
 cnoremap <C-O><Del>      <Del>
 cnoremap <C-O><BS>       <BS>
 
-cnoremap <Esc>f <C-\>e<SID>ForwardWord()<CR>
-cmap <M-f> <Esc>f
+if has('gui_running')
+    cnoremap <M-f> <C-\>e<SID>ForwardWord()<CR>
+else
+    cnoremap <Esc>f <C-\>e<SID>ForwardWord()<CR>
+    cmap <M-f> <Esc>f
+endif
 function! <SID>ForwardWord()
     let l:loc = strpart(getcmdline(), 0, getcmdpos() - 1)
     let l:roc = strpart(getcmdline(), getcmdpos() - 1)
@@ -41,8 +49,12 @@ function! <SID>ForwardWord()
     return getcmdline()
 endfunction
 
-cnoremap <Esc>b <C-\>e<SID>BackwardWord()<CR>
-cmap <M-b> <Esc>b
+if has('gui_running')
+    cnoremap <M-b> <C-\>e<SID>BackwardWord()<CR>
+else
+    cnoremap <Esc>b <C-\>e<SID>BackwardWord()<CR>
+    cmap <M-b> <Esc>b
+endif
 function! <SID>BackwardWord()
     let l:loc = strpart(getcmdline(), 0, getcmdpos() - 1)
     let l:roc = strpart(getcmdline(), getcmdpos() - 1)
@@ -120,8 +132,12 @@ function! <SID>BackwardKillLine()
     return l:ret
 endfunction
 
-cnoremap <Esc>d <C-\>e<SID>KillWord()<CR>
-cmap <M-d> <Esc>d
+if has('gui_running')
+    cnoremap <M-d> <C-\>e<SID>KillWord()<CR>
+else
+    cnoremap <Esc>d <C-\>e<SID>KillWord()<CR>
+    cmap <M-d> <Esc>d
+endif
 function! <SID>KillWord()
     call <SID>saveUndoHistory(getcmdline(), getcmdpos())
     let l:loc = strpart(getcmdline(), 0, getcmdpos() - 1)
@@ -142,8 +158,12 @@ function! <SID>KillWord()
     return l:ret
 endfunction
 
-cnoremap <Esc><BS> <C-\>e<SID>BackwardKillWord()<CR>
-cmap <M-BS> <Esc><BS>
+if has('gui_running')
+    cnoremap <M-BS> <C-\>e<SID>BackwardKillWord()<CR>
+else
+    cnoremap <Esc><BS> <C-\>e<SID>BackwardKillWord()<CR>
+    cmap <M-BS> <Esc><BS>
+endif
 function! <SID>BackwardKillWord()
     " Do same as in-built Ctrl-W, except assign deleted text to @c
     call <SID>saveUndoHistory(getcmdline(), getcmdpos())
