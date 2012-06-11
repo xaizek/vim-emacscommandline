@@ -32,8 +32,6 @@ DELETION                                        *emacscommandline-deletion*
                  (i.e. the same behaviour as in Bash: unix-line-discard)
 *META-D*         delete word under cursor
 *META-Backspace* delete word backwards
-*CTRL-W*         delete backwards to previous white-space character
-                 (i.e. the same behaviour as in Bash: unix-word-rubout)
 
 HISTORY                                         *emacscommandline-history*
 
