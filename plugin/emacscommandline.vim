@@ -88,6 +88,7 @@ function! <SID>DeleteChar()
 endfunction
 
 cnoremap <BS> <C-\>e<SID>BackwardDeleteChar()<CR>
+cmap <C-H> <BS>
 function! <SID>BackwardDeleteChar()
     call <SID>saveUndoHistory(getcmdline(), getcmdpos())
     if (getcmdpos() < 2)
