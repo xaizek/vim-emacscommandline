@@ -28,6 +28,11 @@ cnoremap <C-O><C-X><C-U> <C-X><C-U>
 cnoremap <C-O><Del>      <Del>
 cnoremap <C-O><BS>       <BS>
 
+" This piece is from rsi.vim by Tim Pope
+noremap! <expr> <SID>transposition getcmdpos()>strlen(getcmdline())?"\<Left>":getcmdpos()>1?'':"\<Right>"
+noremap! <expr> <SID>transpose "\<BS>\<Right>".matchstr(getcmdline()[0 : getcmdpos()-2], '.$')
+cmap <script> <C-T> <SID>transposition<SID>transpose
+
 if has('gui_running')
     cnoremap <M-f> <C-\>e<SID>ForwardWord()<CR>
 else
@@ -236,4 +241,3 @@ function! <SID>Undo()
     call remove(s:oldcmdline, 0)
     return l:ret
 endfunction
-
